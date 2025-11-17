@@ -1,0 +1,24 @@
+@Metadata.layer: #CUSTOMER
+annotate view ZC_EventTP_4 with
+{
+  @UI.lineItem: [{ position: 10, label: 'Event ID' }]
+  @UI.selectionField: [{ position: 10 }]
+  EventId;
+  
+  @UI.lineItem: [{ position: 20, label: 'Title' }]
+  Title;
+  
+  @UI.lineItem: [{ position: 30, label: 'Location' }]
+  Location;
+  
+  @UI.lineItem: [{ position: 40, label: 'Start Date' }]
+  @UI.selectionField: [{ position: 20 }]
+  StartDate;
+  
+  @UI.lineItem: [{ position: 50, label: 'End Date' }]
+  EndDate;
+ 
+  @UI.lineItem: [{ position: 60, label: 'Status Text' }]
+  StatusText;
+
+}
