@@ -1,6 +1,14 @@
 @Metadata.layer: #CUSTOMER
 annotate view ZC_EventTP_4 with
 {
+  @UI.facet:
+  [
+    { position: 10, targetQualifier: 'EventDetails', label: 'Event Details', type: #FIELDGROUP_REFERENCE },
+    { position: 20, targetQualifier: 'AdminData', label: 'Administrative Data', type: #FIELDGROUP_REFERENCE },
+    { position: 10, targetElement: '_Registrations', label: 'Registrations', type: #LINEITEM_REFERENCE }
+  ]
+  
+  @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
   @UI.lineItem: [{ position: 10, label: 'Event ID' }]
   @UI.selectionField: [{ position: 10 }]
   EventId;
@@ -20,5 +28,4 @@ annotate view ZC_EventTP_4 with
  
   @UI.lineItem: [{ position: 60, label: 'Status Text' }]
   StatusText;
-
 }

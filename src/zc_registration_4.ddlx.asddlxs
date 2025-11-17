@@ -1,0 +1,28 @@
+@Metadata.layer: #CUSTOMER
+annotate entity ZC_REGISTRATION_4
+    with 
+{
+    @UI.facet:
+    [
+      { position: 10, targetQualifier: 'BookingDetails', label: 'Booking Details', type: #FIELDGROUP_REFERENCE },
+      { position: 20, targetQualifier: 'AdminData', label: 'Administrative Data', type: #FIELDGROUP_REFERENCE }
+    ]
+    
+    @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
+
+    @UI.lineItem: [{ position: 10, label: 'Event ID' }]
+    RegistrationId;
+      
+    @UI.lineItem: [{ position: 20, label: 'Title' }]
+    EventUuid;
+      
+    @UI.lineItem: [{ position: 30, label: 'Location' }]
+    ParticipantUuid;
+      
+    @UI.lineItem: [{ position: 40, label: 'Start Date' }]
+    @UI.selectionField: [{ position: 20 }]
+    Status;
+      
+    @UI.lineItem: [{ position: 50, label: 'End Date' }]
+    Remarks;
+}

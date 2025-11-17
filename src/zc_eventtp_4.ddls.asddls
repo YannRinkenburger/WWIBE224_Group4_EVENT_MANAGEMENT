@@ -25,5 +25,8 @@ define root view entity ZC_EventTP_4
     CreatedBy,
     CreatedAt,
     LastChangedBy,
-    LastChangedAt
+    LastChangedAt,
+    
+    _Registrations
+    
 }
