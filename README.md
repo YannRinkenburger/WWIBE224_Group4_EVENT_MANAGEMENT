@@ -1,1 +1,1 @@
-# abap_vorlesung_3_semester
+# WWIBE224_Group6_EVENT_MANAGEMENT
