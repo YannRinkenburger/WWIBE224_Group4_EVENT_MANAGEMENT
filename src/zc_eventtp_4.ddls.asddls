@@ -3,7 +3,8 @@
 @Metadata.allowExtensions: true
 @Search.searchable: true
 define root view entity ZC_EventTP_4 
-  as select from ZR_EVENTTP_4
+  provider contract transactional_query
+  as projection on ZR_EVENTTP_4
 {
     key EventUuid,
     EventId,
@@ -15,18 +16,14 @@ define root view entity ZC_EventTP_4
     EndDate,
     MaxParticipants,
     Status,
-    case Status
-      when 'P' then 'Planned'
-      when 'O' then 'Open'
-      when 'C' then 'Closed'
-      else 'Not found'
-    end as StatusText,
+    StatusText,
     Description,
     CreatedBy,
     CreatedAt,
     LastChangedBy,
     LastChangedAt,
     
-    _Registrations
+    _Registrations : redirected to composition child ZC_REGISTRATION_4
+    
     
 }

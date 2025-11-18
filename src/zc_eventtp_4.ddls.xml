@@ -6,7 +6,7 @@
     <DDLNAME>ZC_EVENTTP_4</DDLNAME>
     <DDLANGUAGE>E</DDLANGUAGE>
     <DDTEXT>Event Projection View</DDTEXT>
-    <SOURCE_TYPE>W</SOURCE_TYPE>
+    <SOURCE_TYPE>P</SOURCE_TYPE>
    </DDLS>
   </asx:values>
  </asx:abap>

@@ -2,8 +2,8 @@
 @EndUserText.label: 'Registration Projection View'
 @Metadata.ignorePropagatedAnnotations: true
 @Metadata.allowExtensions: true
-define root view entity ZC_REGISTRATION_4 
-  as select from ZR_Registration_4
+define view entity ZC_REGISTRATION_4 
+  as projection on ZR_Registration_4
 {
     key RegistrationUuid,
     RegistrationId,
@@ -16,7 +16,7 @@ define root view entity ZC_REGISTRATION_4
     LastChangedBy,
     LastChangedAt,
     /* Associations */
-    _Event,
+    _Event : redirected to parent ZC_EventTP_4,
     _Participant
     
 }

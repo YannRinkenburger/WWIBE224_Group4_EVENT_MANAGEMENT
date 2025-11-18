@@ -12,6 +12,12 @@ define view entity ZI_EVENT_4
     end_date as EndDate,
     max_participants as MaxParticipants,
     status as Status,
+    case status
+      when 'P' then 'Planned'
+      when 'O' then 'Open'
+      when 'C' then 'Closed'
+      else 'Not found'
+    end as StatusText,
     description as Description,
     created_by as CreatedBy,
     created_at as CreatedAt,

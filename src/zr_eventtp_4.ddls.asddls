@@ -3,7 +3,7 @@
 @Metadata.ignorePropagatedAnnotations: true
 define root view entity ZR_EVENTTP_4 
   as select from ZI_EVENT_4
-  association [0..*] to ZR_Registration_4 as _Registrations on $projection.EventUuid = _Registrations.EventUuid
+  composition [0..*] of ZR_Registration_4 as _Registrations
   
 {
     key EventUuid,
@@ -14,6 +14,7 @@ define root view entity ZR_EVENTTP_4
     EndDate,
     MaxParticipants,
     Status,
+    StatusText,
     Description,
     CreatedBy,
     CreatedAt,

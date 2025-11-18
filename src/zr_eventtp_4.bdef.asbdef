@@ -1,0 +1,63 @@
+managed implementation in class zbp_r_eventtp_4 unique;
+strict ( 2 );
+
+define behavior for ZR_EVENTTP_4 alias Event
+persistent table zevent_4
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : global );
+  update;
+  delete;
+
+  association _Registrations { create; }
+
+  field ( readonly, numbering : managed ) EventUuid;
+
+  mapping for zevent_4 corresponding
+    {
+      EventUuid = event_uuid;
+      EventId = event_id;
+      EndDate = end_date;
+      Description = description;
+      MaxParticipants = max_participants;
+      Location = location;
+      Title = title;
+      Status = status;
+      StartDate = start_date;
+      CreatedAt = created_at;
+      CreatedBy = created_by;
+      LastChangedAt = last_changed_at;
+      LastChangedBy = last_changed_by;
+    }
+}
+
+define behavior for ZR_Registration_4 alias Registrations
+persistent table zregistration_4
+lock dependent by _Event
+authorization dependent by _Event
+//etag master <field_name>
+{
+  update;
+  delete;
+
+  association _Event;
+
+  field ( readonly, numbering : managed ) RegistrationUuid;
+  field ( readonly ) EventUuid, ParticipantUuid;
+
+  mapping for zregistration_4 corresponding
+    {
+      RegistrationUuid = registration_uuid;
+      RegistrationId = registration_id;
+      EventUuid = event_uuid;
+      ParticipantUuid = participant_uuid;
+      Remarks = remarks;
+      Status = status;
+      CreatedAt = created_at;
+      CreatedBy = created_by;
+      LastChangedAt = last_changed_at;
+      LastChangedBy = last_changed_by;
+    }
+}
