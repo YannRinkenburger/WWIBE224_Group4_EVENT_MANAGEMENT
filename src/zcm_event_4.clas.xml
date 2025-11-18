@@ -3,9 +3,10 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <VSEOCLASS>
-    <CLSNAME>Z_TEST_CLASS</CLSNAME>
+    <CLSNAME>ZCM_EVENT_4</CLSNAME>
     <LANGU>E</LANGU>
-    <DESCRIPT>Test class to test abap git</DESCRIPT>
+    <DESCRIPT>Event Class</DESCRIPT>
+    <CATEGORY>40</CATEGORY>
     <STATE>1</STATE>
     <CLSCCINCL>X</CLSCCINCL>
     <FIXPT>X</FIXPT>

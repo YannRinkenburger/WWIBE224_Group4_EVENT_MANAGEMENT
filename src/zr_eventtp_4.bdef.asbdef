@@ -20,6 +20,12 @@ authorization master ( instance )
   determination SetEventStatus on modify { create; }
   determination GenerateEventId on modify { create; }
 
+  validation ValidateDates on save { create; }
+  validation ValidateStartDate on save { create; }
+
+  action OpenEvent result [1] $self;
+  action CloseEvent result [1] $self;
+
   mapping for zevent_4 corresponding
     {
       EventUuid = event_uuid;
@@ -46,6 +52,8 @@ authorization dependent by _Event
   delete;
 
   association _Event;
+
+  determination GenerateRegistrationId on modify { create; }
 
   field ( readonly, numbering : managed ) RegistrationUuid;
   field ( readonly ) EventUuid, ParticipantUuid;

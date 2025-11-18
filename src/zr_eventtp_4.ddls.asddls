@@ -4,7 +4,7 @@
 define root view entity ZR_EVENTTP_4 
   as select from ZI_EVENT_4
   composition [0..*] of ZR_Registration_4 as _Registrations
-  association [1..1] to ZI_EventStatusText as _StatusText on $projection.EventUuid = _StatusText.event_uuid
+  association [1..1] to ZI_EventStatusText_4 as _StatusText on $projection.EventUuid = _StatusText.event_uuid
   
   
 {

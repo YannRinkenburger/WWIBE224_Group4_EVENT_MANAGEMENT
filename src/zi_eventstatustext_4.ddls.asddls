@@ -1,7 +1,7 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Status Text for Event'
 @Metadata.ignorePropagatedAnnotations: true
-define view entity ZI_EventStatusText as select from zevent_4
+define view entity ZI_EVENTSTATUSTEXT_4 as select from zevent_4
 {
     key event_uuid,
         status,

@@ -7,6 +7,9 @@ define behavior for ZC_EventTP_4 //alias <alias_name>
   use update;
   use delete;
 
+  use action CloseEvent;
+  use action OpenEvent;
+
   use association _Registrations { create; }
 }
 

@@ -3,7 +3,7 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <DDLS>
-    <DDLNAME>ZI_EVENTSTATUSTEXT</DDLNAME>
+    <DDLNAME>ZI_EVENTSTATUSTEXT_4</DDLNAME>
     <DDLANGUAGE>E</DDLANGUAGE>
     <DDTEXT>Status Text for Event</DDTEXT>
     <SOURCE_TYPE>W</SOURCE_TYPE>
