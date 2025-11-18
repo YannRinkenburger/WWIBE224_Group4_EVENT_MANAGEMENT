@@ -25,7 +25,16 @@ CLASS zcm_event_4 DEFINITION PUBLIC
         attr2 TYPE scx_attrname VALUE '',
         attr3 TYPE scx_attrname VALUE '',
         attr4 TYPE scx_attrname VALUE '',
-      END OF invalid_startdate.
+      END OF invalid_startdate,
+
+      BEGIN OF max_participants_reached,
+        msgid TYPE symsgid      VALUE 'Z_EVENT_4',
+        msgno TYPE symsgno      VALUE '003',
+        attr1 TYPE scx_attrname VALUE '',
+        attr2 TYPE scx_attrname VALUE '',
+        attr3 TYPE scx_attrname VALUE '',
+        attr4 TYPE scx_attrname VALUE '',
+      END OF max_participants_reached.
 
     " Attributs
     DATA user_name TYPE syuname.

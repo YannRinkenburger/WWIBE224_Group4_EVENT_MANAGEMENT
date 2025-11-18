@@ -20,6 +20,12 @@
      <MSGNR>002</MSGNR>
      <TEXT>Startdatum liegt in der Vergangenheit</TEXT>
     </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>Z_EVENT_4</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>Die maximale Kapazität des Events ist erreicht</TEXT>
+    </T100>
    </T100>
   </asx:values>
  </asx:abap>

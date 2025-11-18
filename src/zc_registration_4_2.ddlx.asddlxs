@@ -6,7 +6,7 @@
   title.value: 'RegistrationId',
   description.value: 'EventUuid'
 }
-annotate entity ZC_REGISTRATION_4
+annotate entity ZC_REGISTRATION_4_2
     with 
 {
     @UI.facet:

@@ -1,4 +1,11 @@
 @Metadata.layer: #CUSTOMER
+@UI.headerInfo:
+{
+  typeName: 'Event',
+  typeNamePlural: 'Events',
+  title.value: 'Title',
+  description.value: 'StatusText'
+}
 annotate view ZC_EventTP_4 with
 {
   @UI.facet:
@@ -15,11 +22,11 @@ annotate view ZC_EventTP_4 with
   ]
   
   
-  @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
+  @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData', label: 'Event Id' }]
   @UI.selectionField: [{ position: 10 }]
   EventId;
   
-  @UI.fieldGroup: [{ position: 20, qualifier: 'AdminData' }]
+  @UI.fieldGroup: [{ position: 20, qualifier: 'AdminData', label: 'Event UUID' }]
   EventUuid;
   
   @UI.lineItem: [{ position: 20, label: 'Title' }]

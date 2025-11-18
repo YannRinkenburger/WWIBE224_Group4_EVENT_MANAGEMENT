@@ -4,6 +4,10 @@ CLASS lhc_registrations DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
     METHODS GenerateRegistrationId FOR DETERMINE ON MODIFY
       IMPORTING keys FOR Registrations~GenerateRegistrationId.
+    METHODS SetRegistrationstatus FOR DETERMINE ON MODIFY
+      IMPORTING keys FOR Registrations~SetRegistrationstatus.
+    METHODS MaxParticipantsNotReached FOR VALIDATE ON SAVE
+      IMPORTING keys FOR Registrations~MaxParticipantsNotReached.
 
 ENDCLASS.
 
@@ -18,6 +22,59 @@ CLASS lhc_registrations IMPLEMENTATION.
            WITH VALUE #( FOR key IN keys
                          ( %tky     = key-%tky
                            RegistrationId = registration_id ) ).
+  ENDMETHOD.
+
+  METHOD SetRegistrationstatus.
+    MODIFY ENTITY IN LOCAL MODE ZR_Registration_4
+           UPDATE FIELDS ( Status )
+           WITH VALUE #( FOR key IN keys
+                         ( %tky   = key-%tky
+                           Status = 'New' ) ).
+  ENDMETHOD.
+
+  METHOD MaxParticipantsNotReached.
+    DATA message TYPE REF TO zcm_event_4.
+
+    READ ENTITY IN LOCAL MODE ZR_Registration_4
+         FIELDS ( EventUuid )
+         WITH CORRESPONDING #( keys )
+         RESULT DATA(registrations).
+
+    LOOP AT registrations INTO DATA(registration).
+      DATA all_events     TYPE TABLE OF zevent_4.
+      DATA filtered_event TYPE zevent_4.
+
+      SELECT *
+        FROM zevent_4
+        INTO TABLE @all_events.
+
+      LOOP AT all_events ASSIGNING FIELD-SYMBOL(<row>).
+        IF <row>-event_uuid = registration-EventUuid.
+          filtered_event = <row>.
+        ENDIF.
+      ENDLOOP.
+
+      DATA all_registrations     TYPE TABLE OF zregistration_4.
+      DATA filtered_registrations TYPE TABLE OF zregistration_4.
+
+      SELECT *
+        FROM zregistration_4
+        INTO TABLE @all_registrations.
+
+
+      LOOP AT all_registrations ASSIGNING FIELD-SYMBOL(<row_reg>).
+        IF <row_reg>-event_uuid = filtered_event-event_uuid.
+          APPEND <row_reg> TO filtered_registrations.
+        ENDIF.
+      ENDLOOP.
+
+      IF filtered_event-max_participants <= lines( filtered_registrations ).
+        message = NEW zcm_event_4( textid = zcm_event_4=>max_participants_reached ).
+        APPEND VALUE #( %tky = registration-%tky
+                        %msg = message ) TO reported-event.
+        APPEND VALUE #( %tky = registration-%tky ) TO failed-event.
+      ENDIF.
+    ENDLOOP.
   ENDMETHOD.
 
 ENDCLASS.
@@ -40,6 +97,7 @@ CLASS lhc_Event DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
     METHODS OpenEvent FOR MODIFY
       IMPORTING keys FOR ACTION Event~OpenEvent RESULT result.
+
     METHODS ValidateDates FOR VALIDATE ON SAVE
       IMPORTING keys FOR Event~ValidateDates.
     METHODS ValidateStartDate FOR VALIDATE ON SAVE

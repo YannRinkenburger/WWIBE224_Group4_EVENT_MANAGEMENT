@@ -52,27 +52,27 @@ CLASS zcl_group4_event_data_gen IMPLEMENTATION.
       ( |Indie Summer Festival| )
     ).
 
-DATA(concert_locations) = VALUE stringtab(
-      ( |Nürburgring| )
-      ( |Berlin| )
-      ( |Dresden| )
-      ( |Köln| )
-      ( |Hamburg| )
-      ( |Stuttgart| )
-      ( |München| )
-      ( |Leipzig| )
-    ).
+    DATA(concert_locations) = VALUE stringtab(
+          ( |Nürburgring| )
+          ( |Berlin| )
+          ( |Dresden| )
+          ( |Köln| )
+          ( |Hamburg| )
+          ( |Stuttgart| )
+          ( |München| )
+          ( |Leipzig| )
+        ).
 
-DATA(concert_desc) = VALUE stringtab(
-      ( |Großes Rockfestival mit internationalen Bands.| )
-      ( |Pop-Open-Air-Konzert mit Top-Acts.| )
-      ( |Klassik-Konzert unter freiem Himmel.| )
-      ( |Elektronische Musik mit internationalen DJs.| )
-      ( |Jazz-Konzerte in gemütlicher Atmosphäre.| )
-      ( |Metal-Festival mit mehreren Bühnen.| )
-      ( |Symphonisches Konzert mit Orchester.| )
-      ( |Indie-Festival mit Newcomer-Bands.| )
-    ).
+    DATA(concert_desc) = VALUE stringtab(
+          ( |Großes Rockfestival mit internationalen Bands.| )
+          ( |Pop-Open-Air-Konzert mit Top-Acts.| )
+          ( |Klassik-Konzert unter freiem Himmel.| )
+          ( |Elektronische Musik mit internationalen DJs.| )
+          ( |Jazz-Konzerte in gemütlicher Atmosphäre.| )
+          ( |Metal-Festival mit mehreren Bühnen.| )
+          ( |Symphonisches Konzert mit Orchester.| )
+          ( |Indie-Festival mit Newcomer-Bands.| )
+        ).
 
 
     DATA(concert_status) = VALUE stringtab(
@@ -91,8 +91,8 @@ DATA(concert_desc) = VALUE stringtab(
       ls_event-status           = concert_status[ sy-index ].
 
       " Dates: simple variation
-      ls_event-start_date       = |20250{ sy-index }15|.
-      ls_event-end_date         = |20250{ sy-index }16|.
+      ls_event-start_date       = |20260{ sy-index }15|.
+      ls_event-end_date         = |20260{ sy-index }16|.
 
       " Participants: concerts → higher numbers
       ls_event-max_participants = 500 + sy-index * 100.
@@ -129,7 +129,7 @@ DATA(concert_desc) = VALUE stringtab(
       CLEAR ls_participant.
 
       ls_participant-client           = sy-mandt.
-      ls_participant-participant_id   = |1{ sy-index }|.
+      ls_participant-participant_id   = |{ sy-index }|.
       ls_participant-first_name       = first_names[ sy-index ].
       ls_participant-last_name        = last_names[ sy-index ].
       ls_participant-email            = |{ to_lower( ls_participant-first_name ) }.{ to_lower( ls_participant-last_name ) }@example.com|.
@@ -155,7 +155,7 @@ DATA(concert_desc) = VALUE stringtab(
       CLEAR ls_reg.
 
       ls_reg-client            = sy-mandt.
-      ls_reg-registration_id   = |5000{ sy-index }|.
+      ls_reg-registration_id   = |{ sy-index }|.
       ls_reg-registration_uuid = cl_system_uuid=>create_uuid_x16_static( ).
 
       ls_reg-event_uuid        = lt_events[ sy-index ]-event_uuid.

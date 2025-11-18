@@ -53,10 +53,14 @@ authorization dependent by _Event
 
   association _Event;
 
+  validation MaxParticipantsNotReached on save { create; }
+
+  determination SetRegistrationstatus on modify { create; }
   determination GenerateRegistrationId on modify { create; }
 
   field ( readonly, numbering : managed ) RegistrationUuid;
-  field ( readonly ) EventUuid, ParticipantUuid;
+  field ( readonly ) RegistrationId, EventUuid, Status;
+  field ( mandatory ) ParticipantUuid;
 
   mapping for zregistration_4 corresponding
     {

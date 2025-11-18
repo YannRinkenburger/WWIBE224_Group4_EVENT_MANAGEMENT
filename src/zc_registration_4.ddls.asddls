@@ -8,6 +8,7 @@ define view entity ZC_REGISTRATION_4
     key RegistrationUuid,
     RegistrationId,
     EventUuid,
+    @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_ParticipantVH_4', element: 'ParticipantUuid' } }]
     ParticipantUuid,
     Status,
     Remarks,
