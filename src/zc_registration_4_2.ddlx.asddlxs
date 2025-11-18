@@ -16,7 +16,12 @@ annotate entity ZC_REGISTRATION_4_2
     ]
     
     @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData', label: 'Registration ID' }]
-    @UI.lineItem: [{ position: 10, label: 'Registration ID' }]
+    @UI.lineItem:
+    [
+      { position: 10, label: 'Registration ID' },
+      { position: 10, dataAction: 'ApproveRegistration', label: 'Approve Registration', type: #FOR_ACTION },
+      { position: 20, dataAction: 'RejectRegistration', label: 'Reject Registration', type: #FOR_ACTION }
+    ]
     RegistrationId;
     
     @UI.fieldGroup: [{ position: 30, qualifier: 'AdminData', label: 'Event UUID' }]  
