@@ -40,6 +40,7 @@ annotate view ZC_EventTP_4 with
   @UI.lineItem: [{ position: 40, label: 'Start Date' }]
   @UI.selectionField: [{ position: 20 }]
   @UI.fieldGroup: [{ position: 30, qualifier: 'EventDetails', label: 'Start Date' }]
+  @Consumption.filter:{ selectionType: #INTERVAL, multipleSelections: false }
   StartDate;
   
   @UI.lineItem: [{ position: 50, label: 'End Date' }]

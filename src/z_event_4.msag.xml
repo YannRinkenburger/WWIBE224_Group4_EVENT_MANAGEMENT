@@ -12,7 +12,7 @@
      <SPRSL>E</SPRSL>
      <ARBGB>Z_EVENT_4</ARBGB>
      <MSGNR>001</MSGNR>
-     <TEXT>Das Enddatum muss vor dem Startdatum liegen</TEXT>
+     <TEXT>Das Enddatum darf nicht vor dem Startdatum liegen</TEXT>
     </T100>
     <T100>
      <SPRSL>E</SPRSL>

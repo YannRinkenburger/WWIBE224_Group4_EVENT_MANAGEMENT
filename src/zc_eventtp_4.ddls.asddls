@@ -1,5 +1,6 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Event Projection View'
+@ObjectModel.semanticKey: [ 'EventId' ]
 @Metadata.allowExtensions: true
 @Search.searchable: true
 define root view entity ZC_EventTP_4 

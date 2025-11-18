@@ -4,7 +4,6 @@ strict ( 2 );
 define behavior for ZC_EventTP_4 //alias <alias_name>
 {
   use create;
-  use update;
 
   use action CloseEvent;
   use action OpenEvent;
@@ -14,8 +13,5 @@ define behavior for ZC_EventTP_4 //alias <alias_name>
 
 define behavior for ZC_REGISTRATION_4 //alias <alias_name>
 {
-  use update;
-  use delete;
-
   use association _Event;
 }

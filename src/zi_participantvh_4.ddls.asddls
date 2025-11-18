@@ -8,8 +8,6 @@ define root view entity ZI_ParticipantVH_4
     key participant_uuid as ParticipantUuid,
     @UI.lineItem: [{ position: 10, label: 'ID' }]
     participant_id as ParticipantId,
-    @UI.lineItem: [{ position: 20, label: 'First Name' }]
-    first_name as FirstName,
-    @UI.lineItem: [{ position: 30, label: 'Last Name' }]
-    last_name as LastName
+    @UI.lineItem: [{ position: 20, label: 'Full Name' }]
+    concat_with_space(first_name, last_name, 1) as FullName
 }

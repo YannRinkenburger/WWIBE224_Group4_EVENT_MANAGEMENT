@@ -8,8 +8,8 @@ authorization master ( instance )
 //etag master <field_name>
 {
   create ( authorization : global );
-  update;
   delete;
+  update;
 
   association _Registrations { create; }
 
@@ -48,8 +48,8 @@ lock dependent by _Event
 authorization dependent by _Event
 //etag master <field_name>
 {
-  update;
   delete;
+  update;
 
   association _Event;
 

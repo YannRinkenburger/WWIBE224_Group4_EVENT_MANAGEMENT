@@ -36,6 +36,16 @@ CLASS lhc_ZR_REGISTRATION_4_2 IMPLEMENTATION.
         CONTINUE.
       ENDIF.
 
+      IF registration->Status = 'Rejected'.
+        message = NEW zcm_registration_4( textid      = zcm_registration_4=>already_rejected ).
+        APPEND VALUE #( %tky     = registration->%tky
+                        %element = VALUE #( Status = if_abap_behv=>mk-on )
+                        %msg     = message ) TO reported-zr_registration_4_2.
+        APPEND VALUE #( %tky = registration->%tky ) TO failed-zr_registration_4_2.
+        DELETE registrations INDEX sy-tabix.
+        CONTINUE.
+      ENDIF.
+
       registration->Status = 'Approved'.
       message = NEW zcm_registration_4( severity    = if_abap_behv_message=>severity-success
                                 textid      = zcm_registration_4=>approve_success ).
@@ -65,6 +75,16 @@ CLASS lhc_ZR_REGISTRATION_4_2 IMPLEMENTATION.
          RESULT DATA(registrations).
 
     LOOP AT registrations REFERENCE INTO DATA(registration).
+      IF registration->Status = 'Approved'.
+        message = NEW zcm_registration_4( textid      = zcm_registration_4=>already_approved ).
+        APPEND VALUE #( %tky     = registration->%tky
+                        %element = VALUE #( Status = if_abap_behv=>mk-on )
+                        %msg     = message ) TO reported-zr_registration_4_2.
+        APPEND VALUE #( %tky = registration->%tky ) TO failed-zr_registration_4_2.
+        DELETE registrations INDEX sy-tabix.
+        CONTINUE.
+      ENDIF.
+
       IF registration->Status = 'Rejected'.
         message = NEW zcm_registration_4( textid      = zcm_registration_4=>already_rejected ).
         APPEND VALUE #( %tky     = registration->%tky
