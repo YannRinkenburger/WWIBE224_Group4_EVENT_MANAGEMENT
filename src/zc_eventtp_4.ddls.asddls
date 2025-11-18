@@ -16,7 +16,7 @@ define root view entity ZC_EventTP_4
     EndDate,
     MaxParticipants,
     Status,
-    StatusText,
+    _StatusText.status_text as StatusText,
     Description,
     CreatedBy,
     CreatedAt,

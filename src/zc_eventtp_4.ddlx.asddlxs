@@ -13,19 +13,33 @@ annotate view ZC_EventTP_4 with
   @UI.selectionField: [{ position: 10 }]
   EventId;
   
+  @UI.fieldGroup: [{ position: 20, qualifier: 'AdminData' }]
+  EventUuid;
+  
   @UI.lineItem: [{ position: 20, label: 'Title' }]
+  @UI.fieldGroup: [{ position: 10, qualifier: 'EventDetails', label: 'Title' }]
   Title;
   
   @UI.lineItem: [{ position: 30, label: 'Location' }]
+  @UI.fieldGroup: [{ position: 20, qualifier: 'EventDetails', label: 'Location' }]
   Location;
   
   @UI.lineItem: [{ position: 40, label: 'Start Date' }]
   @UI.selectionField: [{ position: 20 }]
+  @UI.fieldGroup: [{ position: 30, qualifier: 'EventDetails', label: 'Start Date' }]
   StartDate;
   
   @UI.lineItem: [{ position: 50, label: 'End Date' }]
+  @UI.fieldGroup: [{ position: 40, qualifier: 'EventDetails', label: 'End Date' }]
   EndDate;
  
   @UI.lineItem: [{ position: 60, label: 'Status Text' }]
+  @UI.fieldGroup: [{ position: 50, qualifier: 'EventDetails', label: 'Status Text' }]
   StatusText;
+  
+  @UI.fieldGroup: [{ position: 60, qualifier: 'EventDetails', label: 'Description' }]
+  Description;
+  
+  @UI.fieldGroup: [{ position: 60, qualifier: 'EventDetails', label: 'Max Participants' }]
+  MaxParticipants;
 }

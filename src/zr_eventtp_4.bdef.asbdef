@@ -14,6 +14,11 @@ authorization master ( instance )
   association _Registrations { create; }
 
   field ( readonly, numbering : managed ) EventUuid;
+  field ( readonly ) EventID, Status;
+  field ( mandatory ) Title, Location, StartDate, EndDate, MaxParticipants, Description;
+
+  determination SetEventStatus on modify { create; }
+  determination GenerateEventId on modify { create; }
 
   mapping for zevent_4 corresponding
     {
@@ -26,8 +31,6 @@ authorization master ( instance )
       Title = title;
       Status = status;
       StartDate = start_date;
-      CreatedAt = created_at;
-      CreatedBy = created_by;
       LastChangedAt = last_changed_at;
       LastChangedBy = last_changed_by;
     }
@@ -55,9 +58,5 @@ authorization dependent by _Event
       ParticipantUuid = participant_uuid;
       Remarks = remarks;
       Status = status;
-      CreatedAt = created_at;
-      CreatedBy = created_by;
-      LastChangedAt = last_changed_at;
-      LastChangedBy = last_changed_by;
     }
 }

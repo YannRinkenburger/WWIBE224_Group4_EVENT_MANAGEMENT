@@ -10,19 +10,19 @@ annotate entity ZC_REGISTRATION_4
     
     @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
 
-    @UI.lineItem: [{ position: 10, label: 'Event ID' }]
+    @UI.lineItem: [{ position: 10, label: 'Registration ID' }]
     RegistrationId;
       
-    @UI.lineItem: [{ position: 20, label: 'Title' }]
+    @UI.lineItem: [{ position: 20, label: 'Event UUID' }]
     EventUuid;
       
-    @UI.lineItem: [{ position: 30, label: 'Location' }]
+    @UI.lineItem: [{ position: 30, label: 'Participant UUID' }]
     ParticipantUuid;
       
-    @UI.lineItem: [{ position: 40, label: 'Start Date' }]
+    @UI.lineItem: [{ position: 40, label: 'Status' }]
     @UI.selectionField: [{ position: 20 }]
     Status;
       
-    @UI.lineItem: [{ position: 50, label: 'End Date' }]
+    @UI.lineItem: [{ position: 50, label: 'Remarks' }]
     Remarks;
 }
