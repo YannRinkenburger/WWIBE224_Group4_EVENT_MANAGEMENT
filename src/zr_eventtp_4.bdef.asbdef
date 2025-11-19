@@ -15,7 +15,7 @@ authorization master ( instance )
 
   field ( readonly, numbering : managed ) EventUuid;
   field ( readonly ) EventID, Status;
-  field ( mandatory ) Title, Location, StartDate, EndDate, MaxParticipants, Description;
+  field ( mandatory : create, mandatory : update ) Title, Location, StartDate, EndDate, MaxParticipants, Description;
 
   determination SetEventStatus on modify { create; }
   determination GenerateEventId on modify { create; }
@@ -60,7 +60,7 @@ authorization dependent by _Event
 
   field ( readonly, numbering : managed ) RegistrationUuid;
   field ( readonly ) RegistrationId, EventUuid, Status;
-  field ( mandatory ) ParticipantUuid;
+  field ( mandatory : create, mandatory : update ) ParticipantUuid;
 
   mapping for zregistration_4 corresponding
     {
