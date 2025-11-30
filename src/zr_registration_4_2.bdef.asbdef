@@ -24,5 +24,9 @@ authorization master ( instance )
       ParticipantUuid = participant_uuid;
       Remarks = remarks;
       Status = status;
+      CreatedBy = created_by;
+      CreatedAt = created_at;
+      LastChangedAt = last_changed_at;
+      LastChangedBy = last_changed_by;
     }
 }

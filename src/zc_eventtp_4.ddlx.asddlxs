@@ -6,6 +6,7 @@
   title.value: 'Title',
   description.value: 'StatusText'
 }
+@Search.searchable: true
 annotate view ZC_EventTP_4 with
 {
   @UI.facet:
@@ -35,6 +36,8 @@ annotate view ZC_EventTP_4 with
   
   @UI.lineItem: [{ position: 30, label: 'Location' }]
   @UI.fieldGroup: [{ position: 20, qualifier: 'EventDetails', label: 'Location' }]
+  @Search.defaultSearchElement: true
+  @Search.fuzzinessThreshold: 0.7
   Location;
   
   @UI.lineItem: [{ position: 40, label: 'Start Date' }]

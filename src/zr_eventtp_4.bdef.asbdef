@@ -37,6 +37,8 @@ authorization master ( instance )
       Title = title;
       Status = status;
       StartDate = start_date;
+      CreatedBy = created_by;
+      CreatedAt = created_at;
       LastChangedAt = last_changed_at;
       LastChangedBy = last_changed_by;
     }
@@ -70,5 +72,9 @@ authorization dependent by _Event
       ParticipantUuid = participant_uuid;
       Remarks = remarks;
       Status = status;
+      CreatedBy = created_by;
+      CreatedAt = created_at;
+      LastChangedAt = last_changed_at;
+      LastChangedBy = last_changed_by;
     }
 }
