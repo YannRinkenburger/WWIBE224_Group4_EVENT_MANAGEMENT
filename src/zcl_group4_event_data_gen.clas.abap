@@ -42,42 +42,42 @@ CLASS zcl_group4_event_data_gen IMPLEMENTATION.
     " CREATE 8 CONCERT EVENTS
     "===============================================================
     DATA(concert_titles) = VALUE stringtab(
-      ( |Rock am Ring| )
-      ( |Pop Night Berlin| )
-      ( |Classic Open Air| )
-      ( |EDM Festival Cologne| )
-      ( |Jazz Evening Hamburg| )
-      ( |Metal Storm Stuttgart| )
-      ( |Symphonic Night Munich| )
-      ( |Indie Summer Festival| )
+      ( |Northern Lights Rock| )
+      ( |Berlin Acoustic Night| )
+      ( |Classic Stars Gala| )
+      ( |Electro Beats Festival| )
+      ( |Smooth Jazz Sessions| )
+      ( |Metal Inferno Live| )
+      ( |Symphonic Dreams| )
+      ( |Indie Vibes Open Air| )
     ).
 
     DATA(concert_locations) = VALUE stringtab(
-          ( |Nürburgring| )
-          ( |Berlin| )
-          ( |Dresden| )
-          ( |Köln| )
           ( |Hamburg| )
-          ( |Stuttgart| )
-          ( |München| )
+          ( |Berlin| )
+          ( |Hannover| )
+          ( |Köln| )
+          ( |Bremen| )
+          ( |Dortmund| )
+          ( |Bremen| )
           ( |Leipzig| )
         ).
 
     DATA(concert_desc) = VALUE stringtab(
-          ( |Großes Rockfestival mit internationalen Bands.| )
-          ( |Pop-Open-Air-Konzert mit Top-Acts.| )
-          ( |Klassik-Konzert unter freiem Himmel.| )
+          ( |Rockkonzert mit neuen europäischen Bands.| )
+          ( |Akustik-Abend mit Singer-Songwritern.| )
+          ( |Klassikgala mit internationalen Solisten.| )
           ( |Elektronische Musik mit internationalen DJs.| )
           ( |Jazz-Konzerte in gemütlicher Atmosphäre.| )
-          ( |Metal-Festival mit mehreren Bühnen.| )
-          ( |Symphonisches Konzert mit Orchester.| )
+          ( |Heavy-Metal-Nacht mit Pyro-Show.| )
+          ( |Symphonische Nacht mit großem Orchester.| )
           ( |Indie-Festival mit Newcomer-Bands.| )
         ).
 
 
     DATA(concert_status) = VALUE stringtab(
-      ( |P| ) ( |O| ) ( |C| ) ( |P| )
-      ( |O| ) ( |P| ) ( |O| ) ( |P| )
+      ( |O| ) ( |C| ) ( |C| ) ( |P| )
+      ( |O| ) ( |P| ) ( |O| ) ( |O| )
     ).
 
     DO 8 TIMES.
@@ -91,8 +91,8 @@ CLASS zcl_group4_event_data_gen IMPLEMENTATION.
       ls_event-status           = concert_status[ sy-index ].
 
       " Dates: simple variation
-      ls_event-start_date       = |20260{ sy-index }15|.
-      ls_event-end_date         = |20260{ sy-index }16|.
+      ls_event-start_date       = |20260{ sy-index }10|.
+      ls_event-end_date         = |20260{ sy-index }12|.
 
       " Participants: concerts → higher numbers
       ls_event-max_participants = 500 + sy-index * 100.
@@ -115,15 +115,14 @@ CLASS zcl_group4_event_data_gen IMPLEMENTATION.
     " CREATE 8 PARTICIPANTS
     "===============================================================
     DATA(first_names) = VALUE stringtab(
-      ( |Anna| ) ( |Markus| ) ( |Julia| ) ( |Tobias| )
-      ( |Laura| ) ( |Sven| ) ( |Elena| ) ( |Jonas| )
+        ( |Sarah| ) ( |Leon| ) ( |Mara| ) ( |Tim| )
+        ( |Clara| ) ( |Jan| ) ( |Sophie| ) ( |Eric| )
     ).
 
     DATA(last_names) = VALUE stringtab(
-      ( |Schmidt| ) ( |Keller| ) ( |Neumann| ) ( |Hoffmann| )
-      ( |Bauer| ) ( |Krüger| ) ( |Brandt| ) ( |Wagner| )
+        ( |Fischer| ) ( |Kurz| ) ( |Lindner| ) ( |Seidel| )
+        ( |Behrens| ) ( |Walter| ) ( |Krause| ) ( |Winter| )
     ).
-
 
     DO 8 TIMES.
       CLEAR ls_participant.
@@ -162,9 +161,9 @@ CLASS zcl_group4_event_data_gen IMPLEMENTATION.
       ls_reg-participant_uuid  = lt_participants[ sy-index ]-participant_uuid.
 
       CASE sy-index.
-        WHEN 1 OR 4 OR 7. ls_reg-status = 'New'.
-        WHEN 2 OR 5 OR 8. ls_reg-status = 'Approved'.
-        WHEN 3 OR 6.       ls_reg-status = 'Rejected'.
+        WHEN 1 OR 2 OR 7. ls_reg-status = 'Approved'.
+        WHEN 4 OR 6 OR 8. ls_reg-status = 'New'.
+        WHEN 3 OR 5.       ls_reg-status = 'Rejected'.
       ENDCASE.
 
       ls_reg-remarks           = |Registration für Konzert { sy-index }|.
