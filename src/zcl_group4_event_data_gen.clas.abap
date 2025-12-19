@@ -13,10 +13,7 @@ ENDCLASS.
 
 CLASS zcl_group4_event_data_gen IMPLEMENTATION.
     METHOD if_oo_adt_classrun~main.
-
-    "===============================================================
-    " DATA DECLARATIONS
-    "===============================================================
+    
     DATA: lt_events        TYPE TABLE OF zevent_4,
           ls_event         TYPE zevent_4,
           lt_participants  TYPE TABLE OF zparticipant_4,
@@ -25,9 +22,8 @@ CLASS zcl_group4_event_data_gen IMPLEMENTATION.
           ls_reg           TYPE zregistration_4,
           lv_ts            TYPE timestampl.
 
-    "===============================================================
     " DELETE OLD DATA
-    "===============================================================
+    
     DELETE FROM zregistration_4.
     out->write( |Deleted Registrations: { sy-dbcnt }| ).
 
@@ -37,10 +33,8 @@ CLASS zcl_group4_event_data_gen IMPLEMENTATION.
     DELETE FROM zevent_4.
     out->write( |Deleted Events: { sy-dbcnt }| ).
 
-
-    "===============================================================
     " CREATE 8 CONCERT EVENTS
-    "===============================================================
+    
     DATA(concert_titles) = VALUE stringtab(
       ( |Northern Lights Rock| )
       ( |Berlin Acoustic Night| )
@@ -53,27 +47,26 @@ CLASS zcl_group4_event_data_gen IMPLEMENTATION.
     ).
 
     DATA(concert_locations) = VALUE stringtab(
-          ( |Hamburg| )
-          ( |Berlin| )
-          ( |Hannover| )
-          ( |Köln| )
-          ( |Bremen| )
-          ( |Dortmund| )
-          ( |Bremen| )
-          ( |Leipzig| )
-        ).
+      ( |Hamburg| )
+      ( |Berlin| )
+      ( |Hanover| )
+      ( |Cologne| )
+      ( |Bremen| )
+      ( |Dortmund| )
+      ( |Bremen| )
+      ( |Leipzig| )
+    ).
 
     DATA(concert_desc) = VALUE stringtab(
-          ( |Rockkonzert mit neuen europäischen Bands.| )
-          ( |Akustik-Abend mit Singer-Songwritern.| )
-          ( |Klassikgala mit internationalen Solisten.| )
-          ( |Elektronische Musik mit internationalen DJs.| )
-          ( |Jazz-Konzerte in gemütlicher Atmosphäre.| )
-          ( |Heavy-Metal-Nacht mit Pyro-Show.| )
-          ( |Symphonische Nacht mit großem Orchester.| )
-          ( |Indie-Festival mit Newcomer-Bands.| )
-        ).
-
+      ( |Rock concert featuring new European bands.| )
+      ( |Acoustic evening with singer-songwriters.| )
+      ( |Classical gala with international soloists.| )
+      ( |Electronic music with international DJs.| )
+      ( |Jazz concerts in a cozy atmosphere.| )
+      ( |Heavy metal night with a pyro show.| 
+      ( |Symphonic night with a large orchestra.| )
+      ( |Indie festival featuring newcomer bands.| )
+    ).
 
     DATA(concert_status) = VALUE stringtab(
       ( |O| ) ( |C| ) ( |C| ) ( |P| )
@@ -90,14 +83,11 @@ CLASS zcl_group4_event_data_gen IMPLEMENTATION.
       ls_event-description      = concert_desc[ sy-index ].
       ls_event-status           = concert_status[ sy-index ].
 
-      " Dates: simple variation
       ls_event-start_date       = |20260{ sy-index }10|.
       ls_event-end_date         = |20260{ sy-index }12|.
 
-      " Participants: concerts → higher numbers
       ls_event-max_participants = 500 + sy-index * 100.
 
-      " UUID + TECH FIELDS
       ls_event-event_uuid       = cl_system_uuid=>create_uuid_x16_static( ).
       ls_event-created_by       = 'GEN'.
       ls_event-last_changed_by  = 'GEN'.
@@ -110,10 +100,8 @@ CLASS zcl_group4_event_data_gen IMPLEMENTATION.
     INSERT zevent_4 FROM TABLE @lt_events.
     out->write( |Inserted Events: { sy-dbcnt }| ).
 
-
-    "===============================================================
     " CREATE 8 PARTICIPANTS
-    "===============================================================
+    
     DATA(first_names) = VALUE stringtab(
         ( |Sarah| ) ( |Leon| ) ( |Mara| ) ( |Tim| )
         ( |Clara| ) ( |Jan| ) ( |Sophie| ) ( |Eric| )
@@ -146,10 +134,8 @@ CLASS zcl_group4_event_data_gen IMPLEMENTATION.
     INSERT zparticipant_4 FROM TABLE @lt_participants.
     out->write( |Inserted Participants: { sy-dbcnt }| ).
 
-
-    "===============================================================
     " CREATE 8 REGISTRATIONS with FK links
-    "===============================================================
+    
     DO 8 TIMES.
       CLEAR ls_reg.
 
@@ -166,7 +152,7 @@ CLASS zcl_group4_event_data_gen IMPLEMENTATION.
         WHEN 3 OR 5.       ls_reg-status = 'Rejected'.
       ENDCASE.
 
-      ls_reg-remarks           = |Registration für Konzert { sy-index }|.
+      ls_reg-remarks           = |Registration|.
       ls_reg-created_by        = 'GEN'.
       ls_reg-last_changed_by   = 'GEN'.
 
