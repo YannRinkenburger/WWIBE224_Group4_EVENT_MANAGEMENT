@@ -12,19 +12,19 @@
      <SPRSL>E</SPRSL>
      <ARBGB>Z_EVENT_4</ARBGB>
      <MSGNR>001</MSGNR>
-     <TEXT>Das Enddatum darf nicht vor dem Startdatum liegen</TEXT>
+     <TEXT>The end date must not be before the start date.</TEXT>
     </T100>
     <T100>
      <SPRSL>E</SPRSL>
      <ARBGB>Z_EVENT_4</ARBGB>
      <MSGNR>002</MSGNR>
-     <TEXT>Startdatum liegt in der Vergangenheit</TEXT>
+     <TEXT>The start date is in the past.</TEXT>
     </T100>
     <T100>
      <SPRSL>E</SPRSL>
      <ARBGB>Z_EVENT_4</ARBGB>
      <MSGNR>003</MSGNR>
-     <TEXT>Die maximale Kapazität des Events ist erreicht</TEXT>
+     <TEXT>The maximum capacity of the event has been reached.</TEXT>
     </T100>
    </T100>
   </asx:values>
