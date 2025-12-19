@@ -12,25 +12,25 @@
      <SPRSL>E</SPRSL>
      <ARBGB>Z_REGISTRATION_4</ARBGB>
      <MSGNR>001</MSGNR>
-     <TEXT>Teilnahme wurde erfolgreich genehmigt</TEXT>
+     <TEXT>Participation was successfully approved.</TEXT>
     </T100>
     <T100>
      <SPRSL>E</SPRSL>
      <ARBGB>Z_REGISTRATION_4</ARBGB>
      <MSGNR>002</MSGNR>
-     <TEXT>Teilnahme wurde bereits genehmigt</TEXT>
+     <TEXT>Participation has already been approved.</TEXT>
     </T100>
     <T100>
      <SPRSL>E</SPRSL>
      <ARBGB>Z_REGISTRATION_4</ARBGB>
      <MSGNR>003</MSGNR>
-     <TEXT>Teilnahme wurde erfolgreich abgelehnt</TEXT>
+     <TEXT>Participation was successfully rejected.</TEXT>
     </T100>
     <T100>
      <SPRSL>E</SPRSL>
      <ARBGB>Z_REGISTRATION_4</ARBGB>
      <MSGNR>004</MSGNR>
-     <TEXT>Teilnahme wurde bereits abgelehnt</TEXT>
+     <TEXT>Participation has already been rejected.</TEXT>
     </T100>
    </T100>
   </asx:values>
